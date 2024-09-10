@@ -78,13 +78,7 @@ MainWindowState = AAAA/wAAAAD9AAAAAAAAB3gAAAP3AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAg
 
 
 [Folders]
-<<<<<<< HEAD
-Bios = ../../../../../../home/$user/RetroPie/BIOS/ps2
-||||||| parent of 8226c0f (You may be recognized soon.  Hide.)
-Bios = ../../../../../../home/pi/RetroPie/BIOS/ps2
-=======
-Bios = ../../../../../../$home/RetroPie/BIOS/ps2
->>>>>>> 8226c0f (You may be recognized soon.  Hide.)
+Bios = $home/RetroPie/BIOS/ps2
 Snapshots = snaps
 Savestates = sstates
 MemoryCards = memcards
@@ -541,5 +535,5 @@ Type = None
 _EOF_
     fi
 
-    chown -R $user:$user "$md_conf_root/ps2/Config"
+    chown -R $__user:$__group "$md_conf_root/ps2/Config"
 }

@@ -57,7 +57,7 @@ function configure_gmloader() {
             local apk_file="$apk_dir/$(basename ${dl_url})"
             if [[ ! -f "$apk_file" ]]; then
                 download "$dl_url" "$apk_dir"
-                chown $user:$user "$apk_file"
+                chown $__user:$__group "$apk_file"
                 mv -f $apk_dir/AM2R%20v1.5.5%20for%20Android.apk $apk_dir/AM2R.apk
             fi
         done
