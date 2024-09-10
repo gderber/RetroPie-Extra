@@ -15,7 +15,7 @@ rp_module_help="ROM Extensions: .iso .chd\n\nCopy your PS2 roms to $romdir/ps2 c
 rp_module_licence="PROP"
 rp_module_repo="git https://github.com/retropieuser/aethersx2.git main"
 rp_module_section="exp"
-rp_module_flags="!all 64bit"
+rp_module_flags="!all 64bit x86"
 
 function depends_aethersx2() {
     local depends=(matchbox-window-manager xorg xserver-xorg-input-all mesa-vulkan-drivers pulseaudio pipewire-media-session-pulseaudio)
@@ -50,7 +50,7 @@ function configure_aethersx2() {
     if [ ! -d "$biosdir/ps2" ]; then
         mkdir -p "$biosdir/ps2"
     fi
-    chown -R $user:$user "$biosdir/ps2"
+    chown -R $__user:$__group "$biosdir/ps2"
     # Create a symbolic link for BIOS
     if [ ! -L "$home/.config/aethersx2/bios" ]; then
         ln -s "$biosdir/ps2" "$home/.config/aethersx2/bios"
@@ -78,7 +78,13 @@ MainWindowState = AAAA/wAAAAD9AAAAAAAAB3gAAAP3AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAg
 
 
 [Folders]
+<<<<<<< HEAD
 Bios = ../../../../../../home/$user/RetroPie/BIOS/ps2
+||||||| parent of 8226c0f (You may be recognized soon.  Hide.)
+Bios = ../../../../../../home/pi/RetroPie/BIOS/ps2
+=======
+Bios = ../../../../../../$home/RetroPie/BIOS/ps2
+>>>>>>> 8226c0f (You may be recognized soon.  Hide.)
 Snapshots = snaps
 Savestates = sstates
 MemoryCards = memcards

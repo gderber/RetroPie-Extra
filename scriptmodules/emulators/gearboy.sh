@@ -15,7 +15,7 @@ rp_module_desc="Gearboy - Gameboy & Gameboy Color Emulator"
 rp_module_licence="GPL3 https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
 rp_module_section="exp"
 rp_module_repo="git https://github.com/DrHelius/GearBoy.git master"
-rp_module_flags="!x86 !mali !rpi5"
+rp_module_flags="!mali !rpi5"
 
 function depends_gearboy() {
     getDepends build-essential libfreeimage-dev libopenal-dev libpango1.0-dev libsndfile1-dev libudev-dev libasound2-dev libjpeg-dev libtiff5-dev libwebp-dev automake libconfig++-dev libsdl2-dev libglew-dev
@@ -39,6 +39,8 @@ function build_gearboy() {
         cd "$md_build/platforms/raspberrypi3"
     elif isPlatform "rpi4"; then
         cd "$md_build/platforms/raspberrypi4"
+    elif isPlatform "x86"; then
+        cd "$md_build/platforms/linux"
     fi
 
     make clean
@@ -56,6 +58,8 @@ function build_gearboy() {
     elif isPlatform "rpi4"; then
         echo "Installing for Raspberry Pi 4..."
         md_ret_require="$md_build/platforms/raspberrypi4/gearboy"
+    elif isPlatform "x86"; then
+        md_ret_require="$md_build/platforms/linux/gearboy"
     fi
 }
 
@@ -68,6 +72,8 @@ function install_gearboy() {
         cp "$md_build/platforms/raspberrypi3/gearboy" "$md_inst/gearboy"
     elif isPlatform "rpi4"; then
         cp "$md_build/platforms/raspberrypi4/gearboy" "$md_inst/gearboy"
+    elif isPlatform "x86"; then
+        cp "$md_build/platforms/linux/gearboy" "$md_inst/gearboy"
     fi
 }
 
